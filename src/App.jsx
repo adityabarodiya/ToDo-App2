@@ -1,13 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { useEffect } from "react";
+
+var todos = [
+  {
+    title: "go to gym",
+    id: 1,
+  },
+  {
+    title: "go to gym",
+    id: 1,
+  },
+];
+
+var todo = {
+  title: "go to gym",
+  id: 1,
+};
+
+setInterval(() => {
+  todo.title = "qwerty";
+}, 1000);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  const [todo, setTodo] = useState({ title: "go to gym", id: 1 });
+  console.log("render");
+
+  useEffect(() => {
+    setInterval(() => {
+      setTodo({
+        title: "go to gym plese",
+        id: parseInt(Math.random()*1000),
+      });
+      console.log('-------------')
+    },1000);
+  }, []);
 
   return (
     <>
+      {todo.title}
+      <br />
+      {todo.id}
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -29,7 +66,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
