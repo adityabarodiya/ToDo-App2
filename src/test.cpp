@@ -7,29 +7,33 @@ using namespace std;
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
-    set<int> st;
+    int n;
+    cin >> n;
 
-    while (n--)
+    vi v(n);
+
+    //bool neg = 0, pos = 0;    
+    int posMn = INT_MAX;
+
+    for (int i = 0; i < n; ++i)
     {
-        int a;
-        cin >>a;
-        st.insert(a);
+        int j;
+        cin >> j;
+        v[i] = abs(j);
+        if (v[i] == 0)
+        {
+            cout << "0\n";
+            return;
+        }else if(v[i] < posMn) posMn = v[i];      
     }
 
-   if (st.find(m) != st.end())
-        cout << "YES\n";
-    else
-        cout << "NO\n";
+    cout << posMn <<endl;
 }
 
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
-    }
+    // int t;
+    // cin >> t;
+    // while (t--)
+    solve();
 }
